@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BackgroundDataUpdater</string>
+    <string name="spinner_title">Province</string>
+    <string-array name="array_province">
+        <item>Western Province</item>
+        <item>Central Province</item>
+        <item>Southern Province</item>
+        <item>Uva Province</item>
+        <item>Sabaragamuwa Province</item>
+        <item>North Western Province</item>
+        <item>North Central Province</item>
+        <item>Nothern Province</item>
+        <item>Eastern Province</item>
+    </string-array>
+</resources>

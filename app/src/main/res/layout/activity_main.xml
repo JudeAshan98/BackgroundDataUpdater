@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Vote Online "
+        android:textAlignment="center"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@id/table"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@id/offline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/table">
+
+        <EditText
+            android:id="@+id/fName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="First Name "
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/mobile"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="@id/details"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/lName" />
+
+        <EditText
+            android:id="@+id/lName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Last Name "
+            android:inputType="text"
+            app:layout_constraintTop_toTopOf="@id/details"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/fName"
+            app:layout_constraintBottom_toTopOf="@id/Vote"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <EditText
+            android:id="@+id/mobile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number "
+            android:inputType="phone"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/Vote"
+            app:layout_constraintTop_toBottomOf="@id/fName"/>
+
+        <EditText
+            android:id="@+id/Vote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Vote "
+            android:inputType="number"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/mobile"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lName" />
+
+        <Spinner
+            android:id="@+id/province"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:entries="@array/array_province"
+            android:prompt="@string/spinner_title"
+            app:layout_constraintBottom_toTopOf="@id/comment"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/city"
+            app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="City"
+            app:layout_constraintBottom_toTopOf="@id/comment"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/province"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Vote" />
+
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:maxLines="10"
+            android:hint="Your Comments and suggestions "
+            app:layout_constraintBottom_toTopOf="@id/submit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/city" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Vote Now"
+            app:layout_constraintHorizontal_weight="1"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/Clear"
+            app:layout_constraintTop_toBottomOf="@id/comment" />
+
+        <Button
+            android:id="@+id/Clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Clear"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/submit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/offline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="View Offline Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/online"
+        app:layout_constraintTop_toBottomOf="@id/details" />
+
+    <Button
+        android:id="@+id/online"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="View Online Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/offline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/table"
+        android:outlineAmbientShadowColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/details"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Title">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:background="@color/teal_700"
+                android:gravity="center_horizontal"
+                android:outlineAmbientShadowColor="@color/black"
+                android:text="Brand"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:background="@color/teal_700"
+                android:gravity="center_horizontal"
+                android:text="Vote No"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Mobitel"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="71"
+                android:textAlignment="center" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Dialog"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="77"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Hutch"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="78"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Airtel"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="75"
+                android:textAlignment="center" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
