@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.backgrounddataupdater.database.PeercoreDatabase;
+import com.example.backgrounddataupdater.models.NetworkModel;
 import com.example.backgrounddataupdater.models.VoteModel;
 
 public class CustomReceiver extends BroadcastReceiver {
@@ -14,6 +15,7 @@ public class CustomReceiver extends BroadcastReceiver {
     PeercoreDatabase peercoreDatabase;
     public String Status="OFF";
     VoteModel voteModel = new VoteModel();
+    NetworkModel networkModel = new NetworkModel();
     private static final String ACTION_CUSTOM_BROADCAST =
             BuildConfig.APPLICATION_ID + ".ACTION_CUSTOM_BROADCAST";
     @Override
@@ -25,14 +27,16 @@ public class CustomReceiver extends BroadcastReceiver {
             switch (intentAction){
                 case Intent.ACTION_POWER_CONNECTED:
                     toastMessage = "Power connected!";
-                    Status = "ON";
+                    networkModel.setStatus("ON");
+//                    Status = "ON";
                     voteModel.setCon_status(Status);
                     peercoreDatabase.getVotes().updateVote(voteModel);
                     //setResult(voteModel, 2);
                     break;
                 case Intent.ACTION_POWER_DISCONNECTED:
                     toastMessage = "Power disconnected!";
-                    Status = "OFF";
+//                    Status = "OFF";
+                    networkModel.setStatus("OFF");
                     break;
                 case ACTION_CUSTOM_BROADCAST:
                     toastMessage = "Custom Broadcast Received";

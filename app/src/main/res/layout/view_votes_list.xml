@@ -83,11 +83,11 @@
             android:textAlignment="center"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/Vote"
+            app:layout_constraintRight_toLeftOf="@id/yVote"
             app:layout_constraintTop_toBottomOf="@id/VoteLbl" />
 
         <TextView
-            android:id="@+id/Vote"
+            android:id="@+id/yVote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -104,7 +104,7 @@
             android:gravity="center_horizontal"
             android:textAlignment="center"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintLeft_toRightOf="@id/Vote"
+            app:layout_constraintLeft_toRightOf="@id/yVote"
             app:layout_constraintRight_toLeftOf="@id/Status"
             app:layout_constraintTop_toBottomOf="@id/NamedLbl" />
 

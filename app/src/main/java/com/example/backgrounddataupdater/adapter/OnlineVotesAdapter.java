@@ -31,7 +31,7 @@ public class OnlineVotesAdapter extends RecyclerView.Adapter<OnlineVotesAdapter.
     @NonNull
     @Override
     public VoteListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = inflater.inflate(R.layout.activity_online_votes, parent, false);
+        View v = inflater.inflate(R.layout.view_votes_list, parent, false);
         return new VoteListViewHolder(v);
     }
 
@@ -55,7 +55,7 @@ public class OnlineVotesAdapter extends RecyclerView.Adapter<OnlineVotesAdapter.
         } else return 0;
     }
 
-    static class VoteListViewHolder extends RecyclerView.ViewHolder implements View.OnTouchListener {
+    static class VoteListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView id_text, vote_text, name_text,status;
         CardView list_card;
 
@@ -64,7 +64,7 @@ public class OnlineVotesAdapter extends RecyclerView.Adapter<OnlineVotesAdapter.
             super(itemView);
 //            itemView.setOnClickListener(this);
             id_text = (TextView) itemView.findViewById(R.id.VoteID);
-            vote_text = (TextView) itemView.findViewById(R.id.Vote);
+            vote_text = (TextView) itemView.findViewById(R.id.yVote);
             name_text = (TextView) itemView.findViewById(R.id.fName);
             status = (TextView) itemView.findViewById(R.id.Status);
             list_card = (CardView) itemView.findViewById(R.id.vote_pick_item);
@@ -72,8 +72,8 @@ public class OnlineVotesAdapter extends RecyclerView.Adapter<OnlineVotesAdapter.
         }
 
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            return false;
+        public void onClick(View v) {
+
         }
     }
 }

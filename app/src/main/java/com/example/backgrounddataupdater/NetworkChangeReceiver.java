@@ -7,7 +7,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import com.example.backgrounddataupdater.models.NetworkModel;
+
 public class NetworkChangeReceiver extends BroadcastReceiver {
+
+    NetworkModel networkModel;
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
@@ -19,8 +23,10 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
     boolean checkInternet(Context context) {
         ServiceManager serviceManager = new ServiceManager(context);
         if (serviceManager.isNetworkAvailable()) {
+            networkModel.setStatus("ON");
             return true;
         } else {
+            networkModel.setStatus("OFF");
             return false;
         }
     }

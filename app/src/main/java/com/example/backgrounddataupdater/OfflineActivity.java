@@ -1,5 +1,6 @@
 package com.example.backgrounddataupdater;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.backgrounddataupdater.adapter.OfflineVotesAdapter;
-import com.example.backgrounddataupdater.adapter.OnlineVotesAdapter;
 import com.example.backgrounddataupdater.database.PeercoreDatabase;
 import com.example.backgrounddataupdater.models.VoteModel;
 
@@ -22,36 +22,39 @@ public class OfflineActivity extends AppCompatActivity {
     List<VoteModel> VoteModels = new ArrayList<VoteModel>();
     VoteModel voteModel = new VoteModel();
     RecyclerView MainRecyclerView;
-    OnlineVotesAdapter OnlineVotesAdapter;
+    OfflineVotesAdapter OfflineVotesAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_votes);
 
-        PeercoreDatabase.getInstance(OfflineActivity.this);
-        PeercoreDatabase.getInstance(OfflineActivity.this);
+        peercoreDatabase = PeercoreDatabase.getInstance(OfflineActivity.this);
+//        PeercoreDatabase.getInstance(OfflineActivity.this);
         initializeVies();
 
         displayList();
 
+
+
     }
-/*
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode > 0) {
             if (resultCode == 1) {
-                VoteModels.add((VoteModel) data.getSerializableExtra("Zone"));
+                VoteModels.add((VoteModel) data.getSerializableExtra("Vote"));
             } else if (resultCode == 2) {
                 int pos = 0;
-                VoteModels.set(pos, (VoteModel) data.getSerializableExtra("Zone"));
+                VoteModels.set(pos, (VoteModel) data.getSerializableExtra("Vote"));
             }
             displayList();
         }
-    }*/
+    }
 
     private void displayList() {
+
         peercoreDatabase = PeercoreDatabase.getInstance(OfflineActivity.this);
         new RetrieveTask(this).execute();
         setAdapter();
@@ -59,10 +62,11 @@ public class OfflineActivity extends AppCompatActivity {
 
     private void setAdapter() {
         RecyclerView recyclerView = findViewById(R.id.list_votes);
-        OnlineVotesAdapter adapter = new OnlineVotesAdapter(OfflineActivity.this, VoteModels);
+        OfflineVotesAdapter adapter = new OfflineVotesAdapter(OfflineActivity.this, VoteModels);
         recyclerView.setLayoutManager(new LinearLayoutManager(OfflineActivity.this));
         recyclerView.setAdapter(adapter);
     }
+
 
     private static class RetrieveTask extends AsyncTask<Void, Void, List<VoteModel>> {
 
@@ -83,10 +87,10 @@ public class OfflineActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(List<VoteModel> notes) {
-            if (notes != null && notes.size() > 0) {
+        protected void onPostExecute(List<VoteModel> votes) {
+            if (votes != null && votes.size() > 0) {
                 activityReference.get().VoteModels.clear();
-                activityReference.get().VoteModels.addAll(notes);
+                activityReference.get().VoteModels.addAll(votes);
             }
         }
     }
@@ -96,7 +100,7 @@ public class OfflineActivity extends AppCompatActivity {
         MainRecyclerView = findViewById(R.id.list_votes);
         MainRecyclerView.setLayoutManager(new LinearLayoutManager((OfflineActivity.this)));
         VoteModels = new ArrayList<>();
-        OnlineVotesAdapter = new OnlineVotesAdapter(OfflineActivity.this, VoteModels);
-        MainRecyclerView.setAdapter(OnlineVotesAdapter);
+        OfflineVotesAdapter = new OfflineVotesAdapter(OfflineActivity.this, VoteModels);
+        MainRecyclerView.setAdapter(OfflineVotesAdapter);
     }
 }

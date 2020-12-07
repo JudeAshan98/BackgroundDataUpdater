@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="@id/details"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/fName"
-            app:layout_constraintBottom_toTopOf="@id/Vote"
+            app:layout_constraintBottom_toTopOf="@id/yVote"
             app:layout_constraintRight_toRightOf="parent" />
 
         <EditText
@@ -63,11 +63,11 @@
             android:inputType="phone"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/Vote"
+            app:layout_constraintRight_toLeftOf="@id/yVote"
             app:layout_constraintTop_toBottomOf="@id/fName"/>
 
         <EditText
-            android:id="@+id/Vote"
+            android:id="@+id/yVote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Vote "
@@ -98,7 +98,7 @@
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/province"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Vote" />
+            app:layout_constraintTop_toBottomOf="@id/yVote" />
 
 
         <EditText

@@ -31,9 +31,8 @@ public class OfflineVotesAdapter extends RecyclerView.Adapter<OfflineVotesAdapte
     @NonNull
     @Override
     public OffVoteListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = inflater.inflate(R.layout.activity_offline_votes, parent, false);
+        View v = inflater.inflate(R.layout.view_votes_list, parent, false);
         return new OffVoteListViewHolder(v);
-
     }
 
     @Override
@@ -42,7 +41,7 @@ public class OfflineVotesAdapter extends RecyclerView.Adapter<OfflineVotesAdapte
 
         holder.id_text.setText("" + voteModel.getVote_id());
         holder.vote_text.setText("" + voteModel.getVote());
-        holder.name_text.setText(""+voteModel.getFname());
+        holder.name_text.setText("" + voteModel.getFname());
         holder.status.setText(""+voteModel.getCon_status());
         holder.id_text.setTag(voteModel);
         holder.id_text.setTag(holder);
@@ -55,23 +54,23 @@ public class OfflineVotesAdapter extends RecyclerView.Adapter<OfflineVotesAdapte
         } else return 0;
     }
 
-    static class OffVoteListViewHolder extends RecyclerView.ViewHolder implements View.OnTouchListener {
+    static class OffVoteListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView id_text, vote_text, name_text,status;
         CardView list_card;
 
         public OffVoteListViewHolder(@NonNull View itemView) {
             super(itemView);
-//            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
             id_text = (TextView) itemView.findViewById(R.id.VoteID);
-            vote_text = (TextView) itemView.findViewById(R.id.Vote);
-            name_text = (TextView) itemView.findViewById(R.id.fName);
+            vote_text = (TextView) itemView.findViewById(R.id.yVote);
+            name_text = (TextView) itemView.findViewById(R.id.Name);
             status = (TextView) itemView.findViewById(R.id.Status);
             list_card = (CardView) itemView.findViewById(R.id.vote_pick_item);
         }
 
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            return false;
+        public void onClick(View v) {
+
         }
     }
 }
